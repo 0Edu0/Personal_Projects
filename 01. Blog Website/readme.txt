@@ -1,0 +1,1 @@
+This is a website for a blog page. It allows the user to: Create a new blog, edit it, and delete it. It does not store anything in a DB, so it's only accesible while the server is running. It works as a practice for Node, Express and mainly, EJS.
