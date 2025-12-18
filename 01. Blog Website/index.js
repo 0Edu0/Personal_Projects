@@ -10,6 +10,10 @@ app.get("/", (req, res) => {
     res.render('index.ejs');
 });
 
+app.get("/new-post", (req, res) => {
+    res.render('new-post.ejs');
+});
+
 app.listen(port, () => {
     console.log(`Listening on port ${port}.`);
 });
