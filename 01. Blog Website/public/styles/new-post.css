@@ -8,6 +8,10 @@ body {
     margin-right: auto;
 }
 
+.blogName {
+    width: 250px;
+}
+
 input {
     margin-top: 10px;
     width: 100px;
