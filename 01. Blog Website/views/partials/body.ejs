@@ -9,7 +9,12 @@
 <body>
     <div class="body">
         <h1>Welcome to the blog website, created with Node, Express and EJS!</h1>
-        <h2>Below you'll see a list for the created blogs, make sure to create one first!</h2>
+        <h2>Below you'll see a list for the created blogs:</h2>
+        <ul>
+            <% blogs.forEach(blog => { %>
+            <a href=""><li><%= blog %></li></a>
+            <% }) %>
+        </ul>
     </div>
 </body>
 </html>
