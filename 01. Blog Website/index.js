@@ -1,13 +1,10 @@
 import express from "express";
 import bodyParser from "body-parser";
 import fs from "fs";
-import { dirname } from "path";
-import { fileURLToPath } from "url";
 
 const app = express();
 const port = 3000;
 const blogStoragePath = '/media/eduardo/Seagate/Programming/Personal Projects/Personal_Projects/01. Blog Website/blogsStorage';
-const __dirname = dirname(fileURLToPath(import.meta.url));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -19,9 +16,10 @@ app.get("/", (req, res) => {
             console.error('Error reading directory:', err);
             return res.status(500).send("Server error");
         }
-        const blogs = files.map(file => 
-            file.replace(/\.txt$/, "")
-        );
+        const blogs = files.map(file => ({
+            title: file.replace(/\.txt$/, ""),
+            slug: file.replace(".txt", "")
+        }));
 
         res.render('index.ejs', { blogs });
         });
