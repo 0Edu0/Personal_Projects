@@ -1,16 +1,22 @@
 import express from "express";
 import bodyParser from "body-parser";
 import fs from "fs";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
 
 const app = express();
 const port = 3000;
-const blogStoragePath = '/media/eduardo/Seagate/Programming/Personal Projects/Personal_Projects/01. Blog Website/blogsStorage';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const blogStoragePath = __dirname + '/blogsStorage';
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
+    console.log(__filename)
+    console.log(__dirname)
     fs.readdir(blogStoragePath, (err, files) => {
         if(err) {
             console.error('Error reading directory:', err);
