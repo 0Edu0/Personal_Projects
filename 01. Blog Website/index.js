@@ -15,8 +15,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-    console.log(__filename)
-    console.log(__dirname)
     fs.readdir(blogStoragePath, (err, files) => {
         if(err) {
             console.error('Error reading directory:', err);
@@ -43,6 +41,10 @@ app.post('/submit', (req, res) => {
         console.log('The file has been saved!');
     });
     res.redirect('/');
+});
+
+app.get('/blogsStorage/:slug', (req, res) => {
+    console.log('hello')
 });
 
 app.listen(port, () => {
