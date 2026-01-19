@@ -1,5 +1,17 @@
-.body {
+body {
     background-color: #e8d8c9;
     color: #4f4f4f;
     padding: 5px;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    color: #4f4f4f;
+}
+
+li:hover {
+    color: #f3701e;
 }
