@@ -1,8 +1,8 @@
-import express from "express";
-import bodyParser from "body-parser";
-import fs from "fs";
-import path, { dirname } from "path";
-import { fileURLToPath } from "url";
+import express from 'express';
+import bodyParser from 'body-parser';
+import fs from 'fs';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
 const app = express();
 const port = 3000;
@@ -12,25 +12,29 @@ const blogStoragePath = __dirname + '/blogsStorage';
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.static("public"));
+app.use(express.static('public'));
 
-app.get("/", (req, res) => {
+app.get('/', (req, res) => {
     fs.readdir(blogStoragePath, (err, files) => {
         if(err) {
             console.error('Error reading directory:', err);
-            return res.status(500).send("Server error");
+            return res.status(500).send('Server error');
         }
         const blogs = files.map(file => ({
-            title: file.replace(/\.txt$/, ""),
-            slug: file.replace(".txt", "")
+            title: file.replace(/\.txt$/, ''),
+            slug: file.replace('.txt', '')
         }));
 
         res.render('index.ejs', { blogs });
         });
     });
 
-app.get("/new-post", (req, res) => {
+app.get('/new-post', (req, res) => {
     res.render('new-post.ejs');
+});
+
+app.get('/about', (req, res) => {
+    res.render('about.ejs');
 });
 
 app.post('/submit', (req, res) => {

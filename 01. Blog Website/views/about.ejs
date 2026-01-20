@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<%- include('partials/header.ejs'); %>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>body {background-color: antiquewhite;}</style>
+    <title>About</title>
+</head>
+<body>
+    <h1>About This Project</h1>
+    <p>This website is a simple blog application built to practice how HTTP requests work and how a backend server handles data. It allows users to create, read, edit, and delete blog posts, demonstrating the full CRUD lifecycle in a minimal and easy-to-understand way.</p>
+    <br>
+    <h2>What the Website Does</h2>
+    <ul>
+        <li>Users can create new blog posts using a form </li>
+        <li>Each blog post is displayed on its own page</li>
+        <li>Existing posts can be edited through a dedicated edit page</li>
+        <li>Posts can be permanently deleted</li>
+        <li>All blog content is stored locally on the server as text files</li>
+    </ul>
+    <h2>Technologies Used</h2>
+    <ul>
+        <li>Node.js as the runtime environment</li>
+        <li>Express.js to handle routing and HTTP requests</li>
+        <li>EJS (Embedded JavaScript) for server-side rendering of HTML</li>
+        <li>File System (fs) module to read, write, update, and delete blog files</li>
+        <li>HTML & CSS for structure and styling</li>
+    </ul>
+    <h2>How It Works</h2>
+    <p>Each blog post is identified by a unique slug, which is part of the URL. When a request is made:</p>
+    <ul>
+        <li>The server extracts the slug from the URL</li>
+        <li>The corresponding text file is read from the filesystem</li>
+        <li>The content is passed to an EJS template and rendered as HTML</li>
+    </ul>
+    <p>For editing and deleting posts, forms send requests that include the slug in the URL. This allows the server to locate the correct file and either update its contents or remove it entirely.</p>
+    <p>This project focuses on understanding backend fundamentals such as routing, request methods, server-side rendering, and file-based data persistence, without using a database.</p>
+    <hr>
+    <p>This application was built as a learning project and is not intended for production use.</p>
+</body>
+</html>
