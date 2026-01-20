@@ -1,7 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import fs from "fs";
-import { dirname } from "path";
+import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 
 const app = express();
@@ -44,7 +44,43 @@ app.post('/submit', (req, res) => {
 });
 
 app.get('/blogsStorage/:slug', (req, res) => {
-    console.log('hello')
+    const slug = req.params.slug;
+
+    fs.readFile(blogStoragePath + '/' + slug + '.txt', 'utf-8', (err, content) => {
+        if(err) {
+            return res.status(404).send('Blog not found');
+        }
+        res.render('postedBlog.ejs', {
+            title: slug,
+            content
+        });
+    });
+});
+
+app.get('/edit/blogsStorage/:slug', (req, res) => {
+    const slug = req.params.slug;
+
+    fs.readFile(blogStoragePath + '/' + slug + '.txt', 'utf-8', (err, content) => {
+        if(err) {
+            return res.status(404).send('Blog not found');
+        }
+        res.render('editPost.ejs', {
+            title: slug,
+            content
+        });
+    });
+});
+
+app.post('/delete/blogsStorage/:slug', (req, res) => {
+    const slug = req.params.slug;
+    fs.unlink(blogStoragePath + '/' + slug + '.txt', (err) => {
+        if(err) {
+            console.error('Error deleting the file: ', err);
+        } else {
+            console.log('File deleted successfully');
+            res.redirect('/');
+        }
+    });
 });
 
 app.listen(port, () => {

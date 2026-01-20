@@ -1,4 +1,21 @@
 .buttons {
     display: flex;
     gap: 10px;
+    float: right;
+    margin-bottom: 10px;
+}
+
+body {
+    background-color: #e8d8c9;
+}
+
+h1 {
+    display: inline-block;
+    color: #4f4f4f;
+    padding: 8px;
+}
+
+pre {
+  white-space: pre-wrap;
+  font-family: inherit;
 }

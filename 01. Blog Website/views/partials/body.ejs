@@ -12,7 +12,11 @@
         <h2>Below you'll see a list for the created blogs:</h2>
         <ul>
             <% blogs.forEach(blog => { %>
-            <a href="/blogsStorage/<%= blog.slug %>""><li><%= blog.title %></li></a>
+            <a href="/blogsStorage/<%= blog.slug %>"">
+                <li>
+                    <%= blog.title %>
+                </li>
+            </a>
             <% }) %>
         </ul>
     </div>
